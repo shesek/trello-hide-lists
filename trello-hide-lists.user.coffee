@@ -17,6 +17,7 @@
   ((style) -> $('<style>').attr(type:'text/css').text(style).appendTo('head')) """
     .toggler { cursor: pointer; }
     .toggler.active { background-color: gainsboro; }
+    #board-header .org-name.toggler { overflow: visible; }
   """
 
   # Tell Trello to re-render its list, as some siez needs to change according
