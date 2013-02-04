@@ -8,7 +8,7 @@
   s = document.createElement 'script'
   s.textContent = '(' + fn + ')()'
   document.body.appendChild s
-) body = ->
+) body = -> # `body =` needed to resolve coffee parsing bug, https://github.com/jashkenas/coffee-script/issues/2692
 
   # Reverse parameter order, purely for sugar
   debounce = (fn, time) -> _.debounce time, fn
