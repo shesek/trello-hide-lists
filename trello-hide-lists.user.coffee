@@ -1,6 +1,6 @@
 `
 // ==UserScript==
-// @match https://trello.com/board/*
+// @match https://trello.com/b/*
 // ==/UserScript==
 `
 # Execute everything in full webpage content
