@@ -1,8 +1,3 @@
-`
-// ==UserScript==
-// @match https://trello.com/board/*
-// ==/UserScript==
-`
 # Execute everything in full webpage content
 ((fn) ->
   s = document.createElement 'script'
@@ -38,14 +33,15 @@
   
   # Wait for Trello to finish rendering its lists, by detecting new .list elements
   # and waiting for it to settle down for 200 ms
-  $(document).on 'DOMNodeInserted', '.list', debounce 200, ->
+  $('.list').each debounce 200, ->
     unless $('.toggler').length
       $('#board-header')
         # Create all buttons
         .append $('.list, .invisible-list').map (_, list) ->
           list = $ list
+          listTitle = list.find('h2')[0]
           button = $('<a>')
-            .text(name = list.find('h2')[0].firstChild.textContent)
+            .text(name = if listTitle then listTitle.firstChild.textContent else "Add...")
             .addClass('quiet org-name toggler active')
           button.click -> toggle list, button
           toggle list, button, true unless is_active name
